@@ -42,6 +42,14 @@ jobs:
           ls -la build/ || echo "Build directory not found!"
           if [ -f "build/index.html" ]; then
             echo "✅ Build successful - index.html found"
+            echo "Checking index.html content..."
+            if grep -q "/assets/index-" build/index.html; then
+              echo "✅ index.html correctly references compiled assets"
+            else
+              echo "❌ WARNING: index.html does not reference compiled assets!"
+              echo "Content of index.html:"
+              cat build/index.html
+            fi
           else
             echo "❌ Build failed - index.html not found"
             exit 1

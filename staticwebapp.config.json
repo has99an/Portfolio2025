@@ -3,7 +3,6 @@
     "rewrite": "/index.html",
     "exclude": [
       "/assets/*",
-      "/src/*",
       "/*.{js,css,json,ico,png,svg,jpg,jpeg,gif,webp,woff,woff2,ttf,eot,webmanifest,jsx,mjs}",
       "/favicon.png",
       "/logo.png",
@@ -11,6 +10,14 @@
       "/models/*"
     ]
   },
+  "routes": [
+    {
+      "route": "/assets/*",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      }
+    }
+  ],
   "responseOverrides": {
     "404": {
       "rewrite": "/index.html",
