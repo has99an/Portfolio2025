@@ -62,6 +62,18 @@ jobs:
             exit 1
           fi
       
+      - name: Check Azure Secret
+        run: |
+          if [ -n "${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_WONDERFUL_GLACIER_08AA1181E }}" ]; then
+            echo "✅ Found secret: AZURE_STATIC_WEB_APPS_API_TOKEN_WONDERFUL_GLACIER_08AA1181E"
+            echo "Secret length: ${#AZURE_STATIC_WEB_APPS_API_TOKEN_WONDERFUL_GLACIER_08AA1181E} characters"
+          else
+            echo "❌ Secret AZURE_STATIC_WEB_APPS_API_TOKEN_WONDERFUL_GLACIER_08AA1181E not found!"
+            exit 1
+          fi
+        env:
+          AZURE_STATIC_WEB_APPS_API_TOKEN_WONDERFUL_GLACIER_08AA1181E: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_WONDERFUL_GLACIER_08AA1181E }}
+      
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
@@ -85,4 +97,5 @@ jobs:
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_WONDERFUL_GLACIER_08AA1181E }}
           action: "close"
+          app_location: "/"
 
