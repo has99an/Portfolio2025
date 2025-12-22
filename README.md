@@ -97,10 +97,42 @@ Portfolio2025/
 
 Portfolioen kan deployes til:
 
+- **Azure Static Web Apps** (konfigureret)
 - **Vercel** (anbefalet)
 - **Netlify**
 - **GitHub Pages**
 - **AWS S3 + CloudFront**
+
+### Azure Static Web Apps
+
+Projektet er konfigureret til deployment på Azure Static Web Apps via GitHub Actions:
+
+1. **Opret Azure Static Web App**:
+   - Gå til Azure Portal
+   - Opret en ny Static Web App resource
+   - Vælg GitHub som source
+   - Vælg dit repository og branch (main)
+
+2. **Konfigurer GitHub Secret**:
+   - Azure vil automatisk oprette en GitHub Secret: `AZURE_STATIC_WEB_APPS_API_TOKEN`
+   - Dette sker automatisk når du forbinder Azure til GitHub
+
+3. **Environment Variables**:
+   - Gå til Azure Portal → Static Web App → Configuration → Application Settings
+   - Tilføj følgende environment variables:
+     - `VITE_EMAILJS_SERVICE_ID`
+     - `VITE_EMAILJS_TEMPLATE_ID`
+     - `VITE_EMAILJS_PUBLIC_KEY`
+     - `VITE_TO_EMAIL`
+
+4. **Automatisk Deployment**:
+   - Workflow filen (`.github/workflows/azure-static-web-apps.yml`) er allerede konfigureret
+   - Den peger på `dist` mappen (Vite's standard output)
+   - Deployment sker automatisk ved push til `main` branch
+
+**Vigtigt**: Workflow filen er konfigureret til at bruge `dist` mappen, som er Vite's standard output mappe.
+
+### Vercel
 
 For Vercel:
 1. Push koden til GitHub
@@ -111,7 +143,7 @@ For Vercel:
    - `VITE_EMAILJS_PUBLIC_KEY`
 4. Deploy automatisk
 
-⚠️ **VIGTIGT**: Husk at tilføje environment variables i din deployment platform (Vercel/Netlify/etc.)!
+⚠️ **VIGTIGT**: Husk at tilføje environment variables i din deployment platform!
 
 ## Licens
 
