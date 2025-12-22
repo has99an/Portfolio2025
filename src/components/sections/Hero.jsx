@@ -4,6 +4,7 @@ import { useLanguage } from "../../context/LanguageContext";
 import { translations } from "../../constants/translations";
 import { profile } from "../../assets";
 import FloatingShapes from "../canvas/FloatingShapes";
+import TypewriterText from "../ui/TypewriterText";
 
 const Hero = () => {
   const { language } = useLanguage();
@@ -32,10 +33,18 @@ const Hero = () => {
             variants={textVariant(0.2)}
             className="font-black text-white text-[32px] xs:text-[40px] sm:text-[50px] md:text-[60px] lg:text-[80px] leading-tight sm:leading-[60px] md:leading-[70px] lg:leading-[98px]"
           >
-            {t.hero.name}
+            <TypewriterText
+              text={t.hero.name}
+              speed={100}
+              className="block"
+            />
             <br />
             <span className="animated-gradient bg-clip-text text-transparent">
-              {t.hero.subtitle}
+              <TypewriterText
+                text={t.hero.subtitle}
+                speed={80}
+                className="inline-block"
+              />
             </span>
           </motion.h1>
 

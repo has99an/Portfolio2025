@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Tilt from "react-parallax-tilt";
+import RevealImage from "./RevealImage";
 
 const ProjectCard = ({
   index,
@@ -27,10 +28,10 @@ const ProjectCard = ({
       >
         <div className="absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/10 to-accent/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
         <div className="relative w-full h-[200px] sm:h-[230px] overflow-hidden rounded-2xl group">
-          <img
+          <RevealImage
             src={image}
             alt={name}
-            className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300"
+            className="w-full h-full group-hover:scale-110 transition-transform duration-300"
             onError={(e) => {
               e.target.src =
                 "https://via.placeholder.com/400x230?text=" +

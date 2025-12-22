@@ -241,6 +241,7 @@ const Contact = () => {
               variant="primary"
               className="w-full"
               disabled={loading}
+              magnetic={true}
             >
               {loading ? t.contact.sending : t.contact.sendBtn}
             </Button>

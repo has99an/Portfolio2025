@@ -37,7 +37,7 @@ const About = () => {
             variants={fadeIn("right", "tween", 0.2, 1)}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.3 }}
             className="flex-1"
           >
             <p className="text-secondary text-sm sm:text-base md:text-lg leading-relaxed">
@@ -49,7 +49,7 @@ const About = () => {
             variants={fadeIn("left", "tween", 0.2, 1)}
             initial="hidden"
             whileInView="show"
-            viewport={{ once: true }}
+            viewport={{ once: true, amount: 0.3 }}
             className="flex-1"
           >
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4">

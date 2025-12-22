@@ -31,29 +31,36 @@ const Experience = () => {
           </h2>
         </motion.div>
 
-        <div className="mt-8 sm:mt-12 flex flex-col gap-6 sm:gap-8">
-          {experiences.map((experience, index) => (
-            <motion.div
-              key={index}
-              variants={fadeIn("up", "tween", index * 0.2, 0.5)}
-              initial="hidden"
-              whileInView="show"
-              viewport={{ once: true }}
-              className="glass rounded-xl p-4 sm:p-6 hover:shadow-lg hover:shadow-accent/20 transition-all group relative overflow-hidden"
-            >
+        <div className="mt-8 sm:mt-12 relative">
+          {/* Timeline line */}
+          <div className="absolute left-4 md:left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-accent/30 via-accent/50 to-accent/30 hidden md:block" />
+          
+          <div className="flex flex-col gap-6 sm:gap-8">
+            {experiences.map((experience, index) => (
               <motion.div
-                className="absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/5 to-accent/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"
-              />
-              <div className="flex flex-col md:flex-row gap-4 sm:gap-6 relative z-10">
-                <div className="flex-shrink-0 flex justify-center md:justify-start">
-                  <motion.div
-                    className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r from-accent to-accent-dark flex items-center justify-center text-2xl sm:text-3xl shadow-lg pulse-glow"
-                    whileHover={{ scale: 1.1, rotate: 360 }}
-                    transition={{ duration: 0.6 }}
-                  >
-                    {experience.icon}
-                  </motion.div>
-                </div>
+                key={index}
+                variants={fadeIn("up", "tween", index * 0.2, 0.5)}
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true }}
+                className="glass rounded-xl p-4 sm:p-6 hover:shadow-lg hover:shadow-accent/20 transition-all group relative overflow-hidden md:pl-20"
+              >
+                <motion.div
+                  className="absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/5 to-accent/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"
+                />
+                {/* Timeline dot */}
+                <div className="absolute left-2 md:left-6 top-6 w-4 h-4 rounded-full bg-accent glow hidden md:block z-20" />
+                
+                <div className="flex flex-col md:flex-row gap-4 sm:gap-6 relative z-10">
+                  <div className="flex-shrink-0 flex justify-center md:justify-start">
+                    <motion.div
+                      className="w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-r from-accent to-accent-dark flex items-center justify-center text-2xl sm:text-3xl shadow-lg pulse-glow"
+                      whileHover={{ scale: 1.1, rotate: 360 }}
+                      transition={{ duration: 0.6 }}
+                    >
+                      {experience.icon}
+                    </motion.div>
+                  </div>
                 <div className="flex-1 text-center md:text-left">
                   <h3 className="text-white text-lg sm:text-xl font-bold">
                     {language === "da" ? experience.title : experience.titleEn}
@@ -77,9 +84,10 @@ const Experience = () => {
                     ))}
                   </ul>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+                </div>
+              </motion.div>
+            ))}
+          </div>
         </div>
       </div>
     </section>
