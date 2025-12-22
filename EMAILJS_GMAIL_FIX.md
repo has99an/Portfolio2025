@@ -66,3 +66,4 @@ Efter reconnect, prøv at sende en besked igen. Hvis det stadig ikke virker:
 2. Tjek EmailJS dashboard "History" for at se fejlbeskeder
 3. Prøv at sende en test email direkte fra EmailJS dashboard
 
+

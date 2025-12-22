@@ -43,3 +43,4 @@ Hvis du allerede har committet credentials til git:
 3. Brug `git filter-branch` eller `git filter-repo` til at fjerne dem fra git historik
 4. Overvej at ændre dine EmailJS credentials i EmailJS dashboard
 
+
