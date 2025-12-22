@@ -8,8 +8,8 @@ export const translations = {
     },
     hero: {
       greeting: "Hej, jeg er",
-      name: "Softwareudvikling",
-      subtitle: "Studerende",
+      name: "Ahmad Almousa",
+      subtitle: "Softwareudvikling Studerende",
       description: "Jeg er en nyuddannet datamatiker, der nu læser Softwareudvikling på første semester (top-up) på UCN. Jeg har en passion for at bygge løsninger og udforske nye teknologier.",
     },
     about: {
@@ -58,8 +58,8 @@ export const translations = {
     },
     hero: {
       greeting: "Hi, I'm",
-      name: "Software Development",
-      subtitle: "Student",
+      name: "Ahmad Almousa",
+      subtitle: "Software Development Student",
       description: "I am a newly graduated Computer Scientist (AP) now pursuing a Bachelor's top-up in Software Development, with a passion for building solutions and exploring new technologies.",
     },
     about: {
