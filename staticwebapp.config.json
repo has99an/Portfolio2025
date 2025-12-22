@@ -1,7 +1,7 @@
 {
   "navigationFallback": {
     "rewrite": "/index.html",
-    "exclude": ["/assets/*", "/*.{css,scss,js,png,gif,ico,jpg,svg}"]
+    "exclude": ["/assets/*.{js,css,json,ico,png,svg,jpg,jpeg,gif,webp,woff,woff2,ttf,eot,webmanifest,jsx}"]
   },
   "routes": [
     {
@@ -15,6 +15,11 @@
       "rewrite": "/index.html",
       "statusCode": 200
     }
+  },
+  "mimeTypes": {
+    ".js": "application/javascript",
+    ".jsx": "application/javascript",
+    ".mjs": "application/javascript"
   }
 }
 
