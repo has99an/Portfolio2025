@@ -22,3 +22,4 @@ const ScrollReveal = ({ children, direction = "up", delay = 0, className = "" })
 export default ScrollReveal;
 
 
+

@@ -35,3 +35,4 @@ const TypewriterText = ({ text, speed = 50, className = "" }) => {
 export default TypewriterText;
 
 
+
