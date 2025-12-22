@@ -14,9 +14,6 @@ jobs:
     if: github.event_name == 'push' || (github.event_name == 'pull_request' && github.event.action != 'closed')
     runs-on: ubuntu-latest
     name: Build and Deploy Job
-    permissions:
-      id-token: write
-      contents: read
     steps:
       - uses: actions/checkout@v3
         with:
@@ -27,18 +24,6 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: '18'
-      
-      - name: Install OIDC Client from Core Package
-        run: npm install @actions/core@1.6.0 @actions/http-client
-      
-      - name: Get Id Token
-        uses: actions/github-script@v6
-        id: idtoken
-        with:
-          script: |
-            const coredemo = require('@actions/core')
-            return await coredemo.getIDToken()
-          result-encoding: string
       
       - name: Install dependencies
         run: npm ci
@@ -62,29 +47,17 @@ jobs:
             exit 1
           fi
       
-      - name: Check Azure Secret
-        run: |
-          if [ -n "${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_WONDERFUL_GLACIER_08AA1181E }}" ]; then
-            echo "✅ Found secret: AZURE_STATIC_WEB_APPS_API_TOKEN_WONDERFUL_GLACIER_08AA1181E"
-            echo "Secret length: ${#AZURE_STATIC_WEB_APPS_API_TOKEN_WONDERFUL_GLACIER_08AA1181E} characters"
-          else
-            echo "❌ Secret AZURE_STATIC_WEB_APPS_API_TOKEN_WONDERFUL_GLACIER_08AA1181E not found!"
-            exit 1
-          fi
-        env:
-          AZURE_STATIC_WEB_APPS_API_TOKEN_WONDERFUL_GLACIER_08AA1181E: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_WONDERFUL_GLACIER_08AA1181E }}
-      
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
         with:
           azure_static_web_apps_api_token: ${{ secrets.AZURE_STATIC_WEB_APPS_API_TOKEN_WONDERFUL_GLACIER_08AA1181E }}
+          repo_token: ${{ secrets.GITHUB_TOKEN }}
           action: "upload"
           app_location: "/"
           api_location: ""
           output_location: "build"
           skip_app_build: true
-          github_id_token: ${{ steps.idtoken.outputs.result }}
 
   close_pull_request_job:
     if: github.event_name == 'pull_request' && github.event.action == 'closed'
