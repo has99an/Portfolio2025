@@ -3,6 +3,7 @@ import {
   candylicious,
   handyrent,
   handwriting,
+  georgiatech,
   web,
   backend,
   mobile,
@@ -167,6 +168,26 @@ export const projects = [
     source_code_link: {
       api: "https://github.com/has99an/handwriting-recognition-angular-ui",
       ui: "https://github.com/has99an/handwriting-recognition-api",
+    },
+  },
+  {
+    name: "Georgia Tech Marketplace",
+    description:
+      "Event-driven microservices arkitektur for et online B2C/C2C marketplace. Implementeret med RabbitMQ til asynkron kommunikation, CQRS pattern til søgeperformance, SAGA pattern til ordrebehandling og Docker containerisering. Designet til at håndtere 1500+ requests/minut.",
+    descriptionEn:
+      "Event-driven microservices architecture for an online B2C/C2C marketplace. Implemented with RabbitMQ for asynchronous communication, CQRS pattern for search performance, SAGA pattern for order processing, and Docker containerization. Designed to handle 1500+ requests/minute.",
+    tags: [
+      { name: "Microservices", color: "blue-text-gradient" },
+      { name: "Event-Driven", color: "green-text-gradient" },
+      { name: "CQRS/SAGA", color: "pink-text-gradient" },
+      { name: "Docker", color: "orange-text-gradient" },
+      { name: "RabbitMQ", color: "pink-text-gradient" },
+      { name: ".NET 8", color: "green-text-gradient" },
+    ],
+    image: georgiatech,
+    source_code_link: {
+      server: "https://github.com/has99an/GeorgiaTechLibrary.Marketplace",
+      ui: "https://github.com/has99an/GeorgiaTechLibrary.Marketplace.UI1",
     },
   },
 ];

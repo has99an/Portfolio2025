@@ -26,7 +26,8 @@ import candylicious from "./candylicious.png";
 import handyrent from "./handyrent.png";
 import portfolio from "./portfolio.png"
 import vesterbjerg from "./vesterbjerg.png";
-import handwriting from "./handwriting.png"
+import handwriting from "./handwriting.png";
+import georgiatech from "./Georgia Tech Library - Marketplace.png";
 
 
 export {
@@ -55,5 +56,6 @@ export {
   portfolio,
   vesterbjerg,
   handwriting,
+  georgiatech,
   profile,
 };
