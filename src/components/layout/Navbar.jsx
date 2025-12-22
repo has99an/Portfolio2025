@@ -41,16 +41,25 @@ const Navbar = () => {
             transition={{ duration: 0.5 }}
             className="flex items-center gap-2 sm:gap-3"
           >
-            <img src={logo} alt="logo" className="w-8 h-8 sm:w-10 sm:h-10 object-contain" />
-            <h1 className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-accent to-accent-dark bg-clip-text text-transparent whitespace-nowrap">
+            <motion.img
+              src={logo}
+              alt="logo"
+              className="w-8 h-8 sm:w-10 sm:h-10 object-contain"
+              whileHover={{ rotate: 360 }}
+              transition={{ duration: 0.6 }}
+            />
+            <motion.h1
+              className="text-lg sm:text-xl md:text-2xl font-bold bg-gradient-to-r from-accent to-accent-dark bg-clip-text text-transparent whitespace-nowrap"
+              whileHover={{ scale: 1.05 }}
+            >
               Ahmad Almousa
-            </h1>
+            </motion.h1>
           </motion.div>
 
           <ul className="hidden md:flex items-center gap-6 lg:gap-10">
             {navLinks.map((link) => (
               <li key={link.id}>
-                <a
+                <motion.a
                   href={`#${link.id}`}
                   onClick={(e) => {
                     e.preventDefault();
@@ -62,15 +71,17 @@ const Navbar = () => {
                       ? "text-accent"
                       : "text-secondary hover:text-white"
                   }`}
+                  whileHover={{ y: -2 }}
+                  whileTap={{ y: 0 }}
                 >
                   {t.nav[link.id]}
                   {active === link.id && (
                     <motion.span
                       layoutId="activeSection"
-                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent"
+                      className="absolute -bottom-1 left-0 right-0 h-0.5 bg-accent glow"
                     />
                   )}
-                </a>
+                </motion.a>
               </li>
             ))}
           </ul>

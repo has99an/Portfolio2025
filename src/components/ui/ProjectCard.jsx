@@ -20,11 +20,12 @@ const ProjectCard = ({
       transition={{ delay: index * 0.2, duration: 0.5 }}
     >
       <Tilt
-        className="w-full max-w-sm sm:w-[360px] rounded-2xl glass p-4 sm:p-5 hover:shadow-xl hover:shadow-accent/20 transition-all"
+        className="w-full max-w-sm sm:w-[360px] rounded-2xl glass p-4 sm:p-5 hover:shadow-xl hover:shadow-accent/20 transition-all group relative overflow-hidden"
         tiltMaxAngleX={10}
         tiltMaxAngleY={10}
         transitionSpeed={1000}
       >
+        <div className="absolute inset-0 bg-gradient-to-r from-accent/0 via-accent/10 to-accent/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
         <div className="relative w-full h-[200px] sm:h-[230px] overflow-hidden rounded-2xl group">
           <img
             src={image}
@@ -82,18 +83,23 @@ const ProjectCard = ({
           </div>
         </div>
 
-        <div className="mt-4 sm:mt-5">
-          <h3 className="text-white font-bold text-lg sm:text-xl md:text-[24px]">{name}</h3>
+        <div className="mt-4 sm:mt-5 relative z-10">
+          <h3 className="text-white font-bold text-lg sm:text-xl md:text-[24px] group-hover:text-accent transition-colors">{name}</h3>
           <p className="mt-2 text-secondary text-xs sm:text-sm md:text-[14px] leading-relaxed">
             {language === "da" ? description : descriptionEn}
           </p>
         </div>
 
-        <div className="mt-3 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2">
+        <div className="mt-3 sm:mt-4 flex flex-wrap gap-1.5 sm:gap-2 relative z-10">
           {tags.map((tag) => (
-            <p key={tag.name} className={`text-[14px] ${tag.color}`}>
+            <motion.p
+              key={tag.name}
+              className={`text-[14px] ${tag.color} cursor-default`}
+              whileHover={{ scale: 1.1, y: -2 }}
+              transition={{ type: "spring", stiffness: 400 }}
+            >
               #{tag.name}
-            </p>
+            </motion.p>
           ))}
         </div>
       </Tilt>

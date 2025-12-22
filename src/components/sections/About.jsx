@@ -5,12 +5,17 @@ import { translations } from "../../constants/translations";
 import { services } from "../../constants";
 import Card from "../ui/Card";
 
+const SectionDivider = () => (
+  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
+);
+
 const About = () => {
   const { language } = useLanguage();
   const t = translations[language];
 
   return (
     <section id="about" className="relative w-full py-20">
+      <SectionDivider />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-16">
         <motion.div
           variants={textVariant()}

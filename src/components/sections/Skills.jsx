@@ -5,12 +5,17 @@ import { translations } from "../../constants/translations";
 import { technologies } from "../../constants";
 import SkillBadge from "../ui/SkillBadge";
 
+const SectionDivider = () => (
+  <div className="absolute top-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-accent/50 to-transparent" />
+);
+
 const Skills = () => {
   const { language } = useLanguage();
   const t = translations[language];
 
   return (
     <section id="skills" className="relative w-full py-20 bg-black-100">
+      <SectionDivider />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 md:px-16">
         <motion.div
           variants={textVariant()}

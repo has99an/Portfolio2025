@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 
-const Button = ({ children, onClick, className = "", variant = "primary" }) => {
-  const baseStyles = "px-6 py-3 rounded-lg font-medium transition-all duration-300";
+const Button = ({ children, onClick, className = "", variant = "primary", type = "button", disabled = false }) => {
+  const baseStyles = "px-6 py-3 rounded-lg font-medium transition-all duration-300 relative overflow-hidden";
   
   const variants = {
     primary: "bg-gradient-to-r from-accent to-accent-dark text-white hover:shadow-lg hover:shadow-accent/50",
@@ -11,12 +11,20 @@ const Button = ({ children, onClick, className = "", variant = "primary" }) => {
 
   return (
     <motion.button
-      whileHover={{ scale: 1.05 }}
-      whileTap={{ scale: 0.95 }}
+      type={type}
+      disabled={disabled}
+      whileHover={{ scale: disabled ? 1 : 1.05 }}
+      whileTap={{ scale: disabled ? 1 : 0.95 }}
       onClick={onClick}
-      className={`${baseStyles} ${variants[variant]} ${className}`}
+      className={`${baseStyles} ${variants[variant]} ${className} ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
     >
-      {children}
+      <motion.div
+        className="absolute inset-0 bg-white/20"
+        initial={{ x: "-100%" }}
+        whileHover={{ x: "100%" }}
+        transition={{ duration: 0.5 }}
+      />
+      <span className="relative z-10">{children}</span>
     </motion.button>
   );
 };

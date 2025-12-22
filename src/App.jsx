@@ -9,12 +9,16 @@ import Projects from "./components/sections/Projects";
 import Contact from "./components/sections/Contact";
 import Footer from "./components/layout/Footer";
 import ScrollToTop from "./components/layout/ScrollToTop";
+import AnimatedBackground from "./components/canvas/AnimatedBackground";
+import CursorTrail from "./components/ui/CursorTrail";
 
 function App() {
   return (
     <LanguageProvider>
       <BrowserRouter>
         <div className="relative z-10 bg-primary">
+          <AnimatedBackground />
+          <CursorTrail />
           <Navbar />
           <Hero />
           <About />

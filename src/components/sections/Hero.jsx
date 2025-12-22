@@ -3,6 +3,7 @@ import { textVariant, fadeIn } from "../../utils/motion";
 import { useLanguage } from "../../context/LanguageContext";
 import { translations } from "../../constants/translations";
 import { profile } from "../../assets";
+import FloatingShapes from "../canvas/FloatingShapes";
 
 const Hero = () => {
   const { language } = useLanguage();
@@ -10,6 +11,7 @@ const Hero = () => {
 
   return (
     <section className="relative w-full h-screen mx-auto pt-20 overflow-hidden">
+      <FloatingShapes />
       {/* Background gradient */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary via-tertiary to-black-200 opacity-50" />
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_20%,rgba(0,217,255,0.1),transparent_50%)]" />
@@ -32,7 +34,7 @@ const Hero = () => {
           >
             {t.hero.name}
             <br />
-            <span className="bg-gradient-to-r from-accent to-accent-dark bg-clip-text text-transparent">
+            <span className="animated-gradient bg-clip-text text-transparent">
               {t.hero.subtitle}
             </span>
           </motion.h1>
@@ -54,15 +56,27 @@ const Hero = () => {
           className="flex-1 flex justify-center items-center mt-8 md:mt-0"
         >
           <div className="relative">
-            <div className="absolute inset-0 bg-gradient-to-r from-accent to-accent-dark rounded-full blur-3xl opacity-20 animate-pulse" />
+            <motion.div
+              className="absolute inset-0 bg-gradient-to-r from-accent to-accent-dark rounded-full blur-3xl opacity-20"
+              animate={{
+                scale: [1, 1.2, 1],
+                opacity: [0.2, 0.4, 0.2],
+              }}
+              transition={{
+                duration: 4,
+                repeat: Infinity,
+                ease: "easeInOut",
+              }}
+            />
             <motion.div
               whileHover={{ scale: 1.05, rotate: 5 }}
-              className="relative"
+              className="relative float"
             >
+              <div className="absolute inset-0 rounded-full glow opacity-50" />
               <img
                 src={profile}
                 alt="Profile"
-                className="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-accent/50 shadow-2xl"
+                className="relative w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 rounded-full object-cover border-4 border-accent/50 shadow-2xl z-10"
               />
             </motion.div>
           </div>
