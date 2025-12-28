@@ -64,6 +64,28 @@ jobs:
             echo "⚠️ staticwebapp.config.json not found in root"
           fi
       
+      - name: Verify final build output
+        run: |
+          echo "=== Final verification of build/index.html ==="
+          cat build/index.html
+          echo ""
+          echo "=== Checking for /src/main.jsx reference ==="
+          if grep -q "/src/main.jsx" build/index.html; then
+            echo "❌ ERROR: build/index.html still references /src/main.jsx!"
+            echo "This should NOT happen. The build is incorrect."
+            exit 1
+          else
+            echo "✅ build/index.html does NOT reference /src/main.jsx (correct)"
+          fi
+          echo ""
+          echo "=== Checking for /assets/ reference ==="
+          if grep -q "/assets/index-" build/index.html; then
+            echo "✅ build/index.html correctly references compiled assets"
+          else
+            echo "❌ ERROR: build/index.html does not reference compiled assets!"
+            exit 1
+          fi
+      
       - name: Build And Deploy
         id: builddeploy
         uses: Azure/static-web-apps-deploy@v1
