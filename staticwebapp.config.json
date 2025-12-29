@@ -16,7 +16,8 @@
       "route": "/assets/*",
       "headers": {
         "cache-control": "public, max-age=31536000, immutable"
-      }
+      },
+      "allowedRoles": ["anonymous"]
     },
     {
       "route": "/src/*",
@@ -33,7 +34,9 @@
   "mimeTypes": {
     ".js": "application/javascript",
     ".jsx": "application/javascript",
-    ".mjs": "application/javascript"
+    ".mjs": "application/javascript",
+    ".css": "text/css",
+    ".json": "application/json"
   }
 }
 
