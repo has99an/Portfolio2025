@@ -195,6 +195,6 @@ export const projects = [
 // Social links
 export const socialLinks = {
   github: "https://github.com/has99an",
-  linkedin: "https://linkedin.com",
+  linkedin: "www.linkedin.com/in/ahmad-almousa-053b1a292",
   email: "mailto:aalmousa563@gmail.com",
 };
